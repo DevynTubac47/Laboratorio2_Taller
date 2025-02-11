@@ -1,17 +1,20 @@
 {
 	"info": {
-		"_postman_id": "8b6e8beb-e33c-4de0-ba81-c2c5d4673fda",
-		"name": "Adoption-System",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
-		"_exporter_id": "12536023"
+		"_postman_id": "eddb2cfa-e625-49f1-a296-459bab8232bf",
+		"name": "Adoption System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37640614"
 	},
 	"item": [
 		{
-			"name": "Auth",
+			"name": "Usuario",
 			"item": [
 				{
-					"name": "Register",
+					"name": "Registrar Usuario",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -19,32 +22,32 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "Angel",
+									"value": "Devy",
 									"type": "text"
 								},
 								{
 									"key": "surname",
-									"value": "Mejía",
+									"value": "Gomez",
 									"type": "text"
 								},
 								{
 									"key": "username",
-									"value": "amejia",
+									"value": "DEV1_",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "amejia@gmail.es",
+									"value": "devyn1@gmail.com",
 									"type": "text"
 								},
 								{
 									"key": "phone",
-									"value": "22160098",
+									"value": "12345678",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "Amejia123*",
+									"value": "12345678",
 									"type": "text"
 								},
 								{
@@ -55,68 +58,126 @@
 								{
 									"key": "profilePicture",
 									"type": "file",
-									"src": "postman-cloud:///1ef4dc1f-9b79-4680-a529-ea114dc8ffeb"
+									"src": "/C:/Users/devyn/OneDrive/Pictures/toad.jpg"
 								}
 							]
 						},
-						"url": "http://127.0.0.1:3001/adoptionSystem/v1/auth/register"
+						"url": {
+							"raw": "http://localhost:3001/adoptionSystem/v1/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"adoptionSystem",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "Login",
+					"name": "Login Usuario",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"amejia@gmail.es\",\r\n    \"password\":\"Amejia123*\"\r\n}",
+							"raw": "{\r\n  \"username\": \"DEV_\",\r\n  \"password\": \"12345678\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://127.0.0.1:3001/adoptionSystem/v1/auth/login"
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Users",
-			"item": [
-				{
-					"name": "Buscar un usuario por ID",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": "http://127.0.0.1:3001/adoptionSystem/v1/user/findUser/67a12b26af19e9044c8341da"
+						"url": {
+							"raw": "http://localhost:3001/adoptionSystem/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"adoptionSystem",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "Eliminar ususario",
+					"name": "Obtener Usuario por ID",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/adoptionSystem/v1/user/findUser/67aa73f6962ff5eb25cd14ed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"adoptionSystem",
+								"v1",
+								"user",
+								"findUser",
+								"67aa73f6962ff5eb25cd14ed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Usuario",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "DELETE",
 						"header": [],
-						"url": "http://127.0.0.1:3000/adoptionSystem/v1/user/deleteUser/67a12b26af19e9044c8341da"
+						"url": {
+							"raw": "http://localhost:3001/adoptionSystem/v1/user/deleteUser/67aa73f6962ff5eb25cd14ed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"adoptionSystem",
+								"v1",
+								"user",
+								"deleteUser",
+								"67aa73f6962ff5eb25cd14ed"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Listar Usuarios",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:3001/adoptionSystem/v1/user/",
+							"raw": "http://localhost:3001/adoptionSystem/v1/user/",
 							"protocol": "http",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"localhost"
 							],
 							"port": "3001",
 							"path": [
@@ -124,129 +185,356 @@
 								"v1",
 								"user",
 								""
-							],
-							"query": [
-								{
-									"key": "from",
-									"value": "1",
-									"disabled": true
-								},
-								{
-									"key": "limits",
-									"value": "2",
-									"disabled": true
-								}
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Actualizar contraseña",
+					"name": "Actualizar Contraseña",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "PATCH",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"newPassword\":\"12345679\"\r\n}",
+							"raw": "{\r\n  \"newPassword\": \"zxcvbnm0k\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://127.0.0.1:3000/adoptionSystem/v1/user/updatePassword/67a12b26af19e9044c8341da"
+						"url": {
+							"raw": "http://localhost:3001/adoptionSystem/v1/user/updatePassword/67aa73f6962ff5eb25cd14ed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"adoptionSystem",
+								"v1",
+								"user",
+								"updatePassword",
+								"67aa73f6962ff5eb25cd14ed"
+							]
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "Actualizar usuario",
+					"name": "Actualizar Usuario",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"new name\",\r\n    \"surname\":\"new surname\"\r\n}",
+							"raw": "{\r\n  \"name\": \"string\",\r\n  \"surname\": \"string\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://127.0.0.1:3001/adoptionSystem/v1/user/updateUser/679bb5d6ee63f68e61116b93"
+						"url": {
+							"raw": "http://localhost:3001/adoptionSystem/v1/user/updateUser/67aa73f6962ff5eb25cd14ed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"adoptionSystem",
+								"v1",
+								"user",
+								"updateUser",
+								"67aa73f6962ff5eb25cd14ed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Foto de Perfil",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "profilePicture",
+									"type": "file",
+									"src": "/C:/Users/devyn/OneDrive/Pictures/dos.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3001/adoptionSystem/v1/user/updateProfilePicture/67aa74ec962ff5eb25cd14f4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"adoptionSystem",
+								"v1",
+								"user",
+								"updateProfilePicture",
+								"67aa74ec962ff5eb25cd14f4"
+							]
+						}
 					},
 					"response": []
 				}
 			]
 		},
 		{
-			"name": "Pets",
+			"name": "Mascota",
 			"item": [
 				{
-					"name": "Buscar mascota por ID",
+					"name": "Registrar Mascota",
 					"request": {
-						"method": "GET",
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
 						"header": [],
-						"url": "http://127.0.0.1:3001/adoptionSystem/v1/pet/findPet/67a3accaa6a4f4df9c3db8b9"
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"string1\",\r\n  \"description\": \"string\",\r\n  \"age\": \"12\",\r\n  \"type\": \"string\",\r\n  \"email\": \"devyn@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/adoptionSystem/v1/pet/addPet",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"adoptionSystem",
+								"v1",
+								"pet",
+								"addPet"
+							]
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "Eliminar mascota",
+					"name": "Obtener Mascota por ID",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/adoptionSystem/v1/pet/findPet/67aa7912036e3e82cec25b7f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"adoptionSystem",
+								"v1",
+								"pet",
+								"findPet",
+								"67aa7912036e3e82cec25b7f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Mascota",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "DELETE",
 						"header": [],
-						"url": "http://127.0.0.1:3001/adoptionSystem/v1/pet/deletePet/679cedc00c50f098afb74105"
+						"url": {
+							"raw": "http://localhost:3001/adoptionSystem/v1/pet/deletePet/67aa7912036e3e82cec25b7f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"adoptionSystem",
+								"v1",
+								"pet",
+								"deletePet",
+								"67aa7912036e3e82cec25b7f"
+							]
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "Listar mascotas",
+					"name": "Listar Mascotas",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "GET",
 						"header": [],
-						"url": "http://127.0.0.1:3001/adoptionSystem/v1/pet/"
-					},
-					"response": []
-				},
-				{
-					"name": "Agregar mascota",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"luna\",\r\n    \"description\":\"Mascota de 4 años\",\r\n    \"age\":4,\r\n    \"type\":\"Perro\",\r\n    \"email\":\"jeustaquiosss@gmail.com\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "http://127.0.0.1:3001/adoptionSystem/v1/pet/addPet"
+						"url": {
+							"raw": "http://localhost:3001/adoptionSystem/v1/pet/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"adoptionSystem",
+								"v1",
+								"pet",
+								""
+							]
+						}
 					},
 					"response": []
 				}
 			]
 		},
 		{
-			"name": "Appointment",
+			"name": "Citas",
 			"item": [
 				{
-					"name": "Agregar una cita",
+					"name": "Agregar Cita",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"date\": \"2023-10-15T10:00:00Z\",\r\n  \"pet\": \"60d21b4667d0d8992e610c85\",\r\n  \"user\": \"60d21b4667d0d8992e610c86\"\r\n}",
+							"raw": "{\r\n  \"date\": \"2023-01-15T10:00:00Z\",\r\n  \"pet\": \"67aa791a036e3e82cec25b82\",\r\n  \"user\": \"67aa73f6962ff5eb25cd14ed\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://127.0.0.1:3001/adoptionSystem/v1/appointment/createAppointment"
+						"url": {
+							"raw": "http://localhost:3001/adoptionSystem/v1/appointment/createAppointment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"adoptionSystem",
+								"v1",
+								"appointment",
+								"createAppointment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Citas del Usuario",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/adoptionSystem/v1/appointment/userAppointment/67aa73f6962ff5eb25cd14ed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"adoptionSystem",
+								"v1",
+								"appointment",
+								"userAppointment",
+								"67aa73f6962ff5eb25cd14ed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Cita",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"newDate\":\"2025-01-15T10:00:00.000+00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/adoptionSystem/v1/appointment/updateAppointment/67aa7c6c036e3e82cec25b95",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"adoptionSystem",
+								"v1",
+								"appointment",
+								"updateAppointment",
+								"67aa7c6c036e3e82cec25b95"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancelar Cita",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/adoptionSystem/v1/appointment/cancelledAppointment/67aa7c70036e3e82cec25b99",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"adoptionSystem",
+								"v1",
+								"appointment",
+								"cancelledAppointment",
+								"67aa7c70036e3e82cec25b99"
+							]
+						}
 					},
 					"response": []
 				}

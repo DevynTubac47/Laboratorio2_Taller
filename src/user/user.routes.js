@@ -15,6 +15,8 @@ router.patch("/updatePassword/:uid", updatePasswordValidator, updatePassword)
 
 router.put("/updateUser/:uid", updateUserValidator, updateUser)
 
+//Esta ruta permite a los suarios actualizar su foto de perfil.
+//La solicitud debe contener un arhivo de imagen y el ID del usuario como parámetro.
 router.patch("/updateProfilePicture/:uid", uploadProfilePicture.single("profilePicture"), 
 updateProfilePictureValidator, updateProfilePicture)
 

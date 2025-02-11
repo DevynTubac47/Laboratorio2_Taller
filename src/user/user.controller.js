@@ -128,11 +128,20 @@ export const updateUser = async (req, res) => {
     }
 }
 
+/*
+    Actualiza la foto de perfil.
+    Esta función actualiza la foto de perfil de un usuario en la base de datos. 
+    Permite reemplazar la imagen de perfil actual con una nueva proporcionada en la solicitud.
+ */
 export const updateProfilePicture = async (req, res) =>{
     try{
+        //Recibe como parametro el ID del usuario.
         const {uid} = req.params
+
+        //Se obtiene el nombre del archivo de imagen cargado. Si no se cargó ningún archivo, se asigna null.
         let newProfilePicture = req.file ? req.file.filename : null
 
+        //Busca el usuario en la base de datos por medio del ID
         const user = await User.findById(uid)
         if(!newProfilePicture){
             return res.status(400).json({
@@ -140,19 +149,25 @@ export const updateProfilePicture = async (req, res) =>{
                 msg: "No se proporciono ningun archivo"
             })
         }
+
+        //Esta parte elimina la imagen anterior que estaba en la base de datos.
         if(user.profilePicture){
             const oldProfilePicture = join(__dirname, "../../public/uploads/profile-pictures", user.profilePicture)
             await fs.unlink(oldProfilePicture)
         }
+
+        //Esta parte actualiza la nueva imagen en la base de datos.
         user.profilePicture = newProfilePicture
         await user.save()
 
+        //Respuesta exitosa.
         res.status(200).json({
             success: true,
             message: "Foto de perfil actualizada",
             user
         })
         
+        //Manejo de Errores
     }catch(err){
         return res.status(500).json({
             success: false,

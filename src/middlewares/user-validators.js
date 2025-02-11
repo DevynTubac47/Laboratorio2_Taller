@@ -60,6 +60,7 @@ export const updateUserValidator = [
     handleErrors
 ]
 
+//Esta función valida ciertos parametros de la solicitud antes de que la foto de perfil del usuario sea actualizada.
 export const updateProfilePictureValidator = [
     param("uid").isMongoId().withMessage("No es un id valido de mongo"),
     param("uid").custom(userExists),

@@ -57,11 +57,19 @@ export const saveAppointment = async (req, res) => {
   }
 };
 
+/*
+  Funcionalidad para Listar las Citas del Usuario.
+  Esta función permite listar las citas asociadas a un usuario específico.
+  Recibe parámetros opcionales para paginar los resultados y retorna el listado de citas.
+ */
 export const getUserAppointment = async (req, res) => {
   try{
+    //Define cuandos resultados se devolverán y define el indice desde donde iniciar la paginación.
     const { limite = 5, desde = 0} = req.query
 
+    //Recibe como parametro el ID del usuario.
     const { uid } = req.params;
+    //Valida y busca a el usuario en la base de datos.
     const user = await User.findById(uid)
     if(!user){
       return res.status(404).json({
@@ -69,8 +77,12 @@ export const getUserAppointment = async (req, res) => {
           message: "Usuario no Encontrado"
       })
     }
+
+    //Se define un objeto query que filtra las citas con estado "CREATED".
     const query = {status: "CREATED", user: uid}
 
+    //Se utilizo Promise.all para ejecutar las tareas de manera concurrente.
+    //Cuenta el número total de citas en la base de datos que cumplen con el filtro definido en query.
     const[total, appointment] = await Promise.all([
         Appointment.countDocuments(query),
         Appointment.find(query)
@@ -78,6 +90,7 @@ export const getUserAppointment = async (req, res) => {
             .limit(Number(limite))            
     ])
 
+    //Respuesta Exitosa, muestra el usuario y la lista de citas con el total de citas.
     return res.status(200).json({
         success: true,
         total,
@@ -85,6 +98,7 @@ export const getUserAppointment = async (req, res) => {
         appointment
     })
 
+  //Manejo de Errores
   }catch(err){
       return res.status(500).json({
           suceess: false,
@@ -94,18 +108,28 @@ export const getUserAppointment = async (req, res) => {
   }
 }
 
+/*
+  Actualiza la fecha de la cita.
+  Esta función actualiza la fecha de una cita en la base de datos.
+  Y recibe el ID de la cita a actualizar y la nueva fecha.
+*/
 export const updateAppointment = async(req, res) => {
   try{
     const { uid } = req.params
     const { newDate } = req.body
 
+    //Actualiza la cita
+    //Se utiliza findByIdAndUpdate para actualizar la fecha y busca la cita por el ID.
     const appointment = await Appointment.findByIdAndUpdate(uid, { date: newDate }, { new: true });
 
+    //Respuesta exitosa.
     return res.status(200).json({
       suceess: true,
       message: "Fecha actualizada",
       appointment
     })
+
+    //Manejo de errores.
   }catch(err){
         return res.status(500).json({
             success: false,
@@ -115,17 +139,26 @@ export const updateAppointment = async(req, res) => {
     }
 }
 
+/*
+  Cancela una cita.
+  Esta función cambia el estado de la cita a "CANCELLED" en la base de datos.
+  Permite al usuario cancelar una cita específica por el ID
+ */
 export const cancelledAppointment = async (req, res) =>{
   try{
+      //Obtiene el ID de la Cita
       const {uid} = req.params
       
+      //Actualiza el estado de la cita. Busca la cita en la base de datos por el medio de la cita. Y asegura que devuelva la cita actualizada.
       const appointment = await Appointment.findByIdAndUpdate(uid, {status: "CANCELLED" }, {new: true})
       
+      //Respuesta exitosa
       return res.status(200).json({
           sucess: true,
           message: "Cita Cancelada",
           appointment
       })
+      //Manejo de Errores.
   }catch(err){
       return res.status(500).json({
           success: false,

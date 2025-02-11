@@ -99,11 +99,12 @@ export const updateAppointment = async(req, res) => {
     const { uid } = req.params
     const { newDate } = req.body
 
-    await Appointment.findByIdAndUpdate(uid, { date: newDate }, { new: true });
+    const appointment = await Appointment.findByIdAndUpdate(uid, { date: newDate }, { new: true });
 
     return res.status(200).json({
       suceess: true,
-      message: "Fecha actualizada"
+      message: "Fecha actualizada",
+      appointment
     })
   }catch(err){
         return res.status(500).json({

@@ -126,16 +126,30 @@ JWT_SECRET=<tu_secreto_jwt>
 Las siguientes funcionalidades necesitan ser desarrolladas:
 
 1. **Actualizar Foto del Usuario**
-   - Descripción: Implementar funcionalidad para actualizar la foto de perfil del usuario.
+  - **URL:** `/adoptionSystem/v1/user/updateProfilePicture/:uid`
+  - **Método:** `PATCH`
+  - **Cuerpo:**
+    ```json
+    {
+      "profilePicture": "file",
+    }
+    ```
 
 2. **Listar Citas**
-   - Descripción: Implementar funcionalidad para listar todas las citas de un usuario.
+  - **URL:** `/appointment/userAppointment/:uid`
+  - **Método:** `GET`
 
 3. **Actualizar Cita**
-   - Descripción: Implementar funcionalidad para actualizar una cita existente.
+   - **URL:** `/appointment/updateAppointment/:uid`
+   - **Método:** `PATCH`
+   - **Cuerpo:**
+    ```json
+    {
+      "newDate":"2025-01-15T10:00:00.000+00:00"
+    } 
+    ```
 
 4. **Cancelar Cita**
-   - Descripción: Implementar funcionalidad para cancelar una cita existente.
-
-5. **Entrega**
-   - Funcionalidades deben ser parte del código fuente y ser entregadas en tiempo y forma indicada en clase.
+   - **URL:** `/appointment/cancelledAppointment/:uid`
+   - **Método:** `DELETE`
+   - **Cuerpo:**
